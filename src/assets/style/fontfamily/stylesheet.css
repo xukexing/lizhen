@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UniDreamLED';
+    src: url('UniDreamLED.woff2') format('woff2'),
+        url('UniDreamLED.woff') format('woff'),
+        url('UniDreamLED.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
