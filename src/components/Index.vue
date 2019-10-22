@@ -9,7 +9,7 @@
   </div>
 <div class="teble">
   <div class="left" :style="{backgroundImage: 'url('+ tebleBg +')'}">
-    <h4>成品模具</h4>
+    <h4>在用模具</h4>
     <table class="leftTable">
       <thead>
         <tr>
@@ -35,10 +35,10 @@
       </tr>
       </thead>
       <tbody class="rightTbody">
-        <tr :class="{'marginTop':index===0}" v-for="(item,index) in tableBodyRight">
+        <tr :class="{'red':item.stock*1<item. earlyWarn*1}" v-for="(item,index) in tableBodyRight">
           <td  class="name" ><p v-text="item.name"></p></td>
           <td  v-text="item.partSku"></td>
-          <td  class="center" v-text="item.unit"></td>
+          <td  class="center" v-text="item. earlyWarn"></td>
           <td  class="tdright" v-text="item.stock"></td>
           <td  class="tdright time" v-text="item.updateTime"></td>
         </tr>
@@ -59,7 +59,7 @@ import {getData} from './axios.js'
               bg:require('.././assets/images/01.jpg'),
               tebleBg:require('.././assets/images/02.png'),
               tableHeadLeft:['编号','名称','状态','更新时间'],
-              tableHeadRight:['名称','规格','单位','库存数量','更新时间'],
+              tableHeadRight:['名称','规格','预警数量','库存数量','更新时间'],
               tableBodyLeft:[],
               tableBodyRight:[],
               resLeftList:[
@@ -217,6 +217,7 @@ import {getData} from './axios.js'
         color #FFFFFF
         text-align center
         line-height 48px
+        font-weight:bold;
       table
         thead
           overflow hidden
@@ -226,7 +227,7 @@ import {getData} from './axios.js'
             color #00F0FF
             font-size 20px
         tbody
-          color #fff
+          color #6AE5FF
           font-size 20px
           margin-top 20px
           tr
@@ -252,11 +253,11 @@ import {getData} from './axios.js'
           tr
             width 100%
             th:nth-of-type(1)
-              width 188px
+              width 208px
             th:nth-of-type(2)
-              width 250px
+              width 210px
             th:nth-of-type(3)
-              width 80px
+              width 100px
               text-align center
             th:nth-of-type(4)
               width 170px
@@ -284,38 +285,40 @@ import {getData} from './axios.js'
           tr
             width 100%
             th:nth-of-type(1)
-              width 188px
+              width 160px
             th:nth-of-type(2)
               width 105px
             th:nth-of-type(3)
-              width 60px
+              width 74px
               text-align center
             th:nth-of-type(4)
-              width 60px
+              width 74px
               text-align right
             th:nth-of-type(5)
               width 180px
               text-align right
         .rightTbody
           width 100%
+          .red
+            color #FF4C4C !important
           tr
             width 100%
             td:nth-of-type(1)
-              width 188px
+              width 160px
             td:nth-of-type(2)
               width 105px
             td:nth-of-type(3)
-              width 60px
+              width 74px
               text-align center
             td:nth-of-type(4)
-              width 60px
+              width 74px
               text-align right
             td:nth-of-type(5)
               width 170px
               text-align right
             .name
               p
-                width 188px
+                width 160px
                 overflow: hidden;
                 text-overflow:ellipsis;
                 white-space: nowrap;
